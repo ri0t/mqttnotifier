@@ -1,0 +1,122 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mqttnotifier"
+dynamic = ["version"]
+authors = [
+    { name="Heiko 'riot' Weinen", email="riot@hackerfleet.eu" },
+]
+description = "MQTT Notification daemon"
+readme = "README.rst"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Utilities", ]
+keywords = [ "mqtt notification toast GUI service daemon" ]
+dependencies = [
+    "click>=8.1.7",
+    "click-repl>=0.3.0",
+    "click-man>=0.4.1",
+    "sphinx-click>=5.1.0",
+    "rich-click>=1.7.1",
+    "paho_mqtt>=1.6.1",
+    "plyer>=2.1.0",
+    "dbus-python>=1.2.0",
+]
+
+[project.scripts]
+mn = "mqttnotifier:cli"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-click",
+    "flake8-pyproject",
+    "pylint",
+    "mypy",
+    "tox",
+    "isort",
+    "black"
+]
+
+[project.urls]
+homepage = "https://github.com/ri0t/mqttnotifier"
+source = "https://github.com/ri0t/mqttnotifier"
+changelog = "https://github.com/ri0t/mqttnotifier/blob/master/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/ri0t/mqttnotifier/issues"
+
+#[tool.pytest.ini_options]
+#testpaths = "tests/"
+
+[tool.setuptools_scm]
+version_file = "src/mqttnotifier/scm_version.py"
+
+[tool.flake8]
+exclude = ".venv, .git, .eggs, __pycache__, build, dist"
+max-line-length = 120
+ignore = "E402, E203"
+show-source = true
+max-complexity = 12
+
+[tool.pylint.messages_control]
+max-line-length = 120
+disable = [
+    #"import-error",
+    #"missing-docstring",
+    #"invalid-name",
+    #"bare-except",
+    #"broad-except",
+    #"broad-exception-raised",
+    #"fixme",
+    #"dangerous-default-value",
+    #"too-few-public-methods",
+    #"useless-object-inheritance"
+]
+
+[tool.mypy]
+python_version = 3.8
+#ignore_missing_imports = true
+
+[tool.isort]
+line_length = 120
+ensure_newline_before_comments = true
+
+[tool.black]
+line-length = 120
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py37,py38,py39,py310,py311
+skip_missing_interpreters = True
+
+[testenv]
+commands = python setup.py test
+deps =
+    pytest==4.4.0
+    coveralls
+    pytest-cov
+    py{37,38,39,310,311}: -rrequirements.txt
+
+[testenv:docs]
+basepython = python
+changedir = docs
+deps =
+    sphinx
+    pytest
+    releases
+    -rrequirements.txt
+commands = py.test --tb=line -v --junitxml=isomer-docs-{envname}.xml check_docs.py
+"""
