@@ -149,7 +149,7 @@ This is what you need to use the software:
 `mn` accepts configuration data in three ways:
 
 * command line arguments (run `mn --help` or `mn launch --help`)
-* environment variables (at least for MN_USERNAME and MN_PASSWORD)
+* environment variables (at least for `MN_USERNAME` and `MN_PASSWORD`)
 * configuration file
 
 A [sample configuration file](https://github.com/ri0t/mqttnotifier/blob/master/example_config.toml) is provided.
@@ -183,11 +183,18 @@ You can also increase verbosity (lower number = higher verbosity) to debug probl
 <!-- ROADMAP -->
 ## Roadmap
 
+- [x] Build basic working prototype
+- [x] Rejoice!
+- [x] Add packaging fluff
 - [ ] Add test suite
+- [x] Add readme
 - [ ] Verify platform independence (it should run on all platforms that support paho-mqtt and plyer)
   - [ ] Maybe write installation/usage instructions for other platforms
 - [ ] Verify python versions (it uses typings, so at least 3.5 is necessary, there are backports for some functionality, though)
 - [ ] NixPkgs packaging
+- [ ] Add basic system integration
+  - [ ] Write systemd unit
+  - [ ] Find good way to integrate in user session
 
 See the [open issues](https://github.com/ri0t/mqttnotifier/issues) for a full list of proposed features (and known issues).
 
@@ -242,7 +249,10 @@ This project was started due to missing functionality and i heavily use it with:
 * [Home Assistant - AVM Callmonitor Extension](https://www.home-assistant.io/integrations/fritzbox_callmonitor)
 
 I use these three in combination to display popup notifications when someone's calling on the landline.
-If you're envious now and want that as well, you can ask me about my automation scripts glueing everything together.
+If you're envious now and want that as well, you can ask me about my automation scripts, that glue everything together.
+
+The logo is taken from the very awesome [BeautyLines](https://store.kde.org/p/1425426/) icon project.
+The screenshot was taken on KDE.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -260,8 +270,7 @@ If you're envious now and want that as well, you can ask me about my automation 
 [issues-url]: https://github.com/ri0t/mqttnotifier/issues
 [license-shield]: https://img.shields.io/github/license/ri0t/mqttnotifier.svg?style=for-the-badge
 [license-url]: https://github.com/ri0t/mqttnotifier/blob/master/LICENSE
-
-[liberapay-shield]: https://img.shields.io/liberapay/gives/:riot
+[liberapay-shield]: https://img.shields.io/liberapay/patrons/riot?style=for-the-badge
 [liberapay-url]: https://liberapay.com/riot/
 [patreon-shield]: https://img.shields.io/badge/-Patreon-black.svg?style=for-the-badge&logo=patreon&colorB=555
 [patreon-url]: https://www.patreon.com/user?u=29020487
