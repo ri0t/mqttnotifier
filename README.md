@@ -99,6 +99,7 @@ Very handy!
 * Python (3.5+ should work, developed with 3.11)
 * [paho-mqtt](https://github.com/eclipse/paho.mqtt.python)
 * [plyer](https://github.com/kivy/plyer)
+* [click](https://click.palletsprojects.com/en/8.1.x/) and its rich ecosphere
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -118,9 +119,10 @@ Very handy!
 
 This is what you need to use the software:
 
-* a working Python 3.7+ installation 
+* a working Python 3 installation 
 * along with a rather recent pip3
-* python-dbus is required by plyer
+* python-dbus is required by plyer and possibly best installed by your distro
+* a notification display tool that is usable by plyer
 
 ### Installation
 
@@ -186,11 +188,16 @@ You can also increase verbosity (lower number = higher verbosity) to debug probl
 - [x] Build basic working prototype
 - [x] Rejoice!
 - [x] Add packaging fluff
+- [ ] Add typings everywhere
 - [ ] Add test suite
 - [x] Add readme
+- [ ] Generate documentation and proper man pages
+- [ ] Generate first release
+- [ ] Package and upload on pypi
 - [ ] Verify platform independence (it should run on all platforms that support paho-mqtt and plyer)
   - [ ] Maybe write installation/usage instructions for other platforms
 - [ ] Verify python versions (it uses typings, so at least 3.5 is necessary, there are backports for some functionality, though)
+- [ ] Check if feedback via notifications is possible (at least on freedesktop systems, it might be)
 - [ ] NixPkgs packaging
 - [ ] Add basic system integration
   - [ ] Write systemd unit
